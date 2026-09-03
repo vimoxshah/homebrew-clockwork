@@ -51,7 +51,7 @@ These are enforced and covered by tests, not aspirations.
 
 ## Links
 
-- Website: https://clockworkd.com
+- Website: https://clockwork.pages.dev
 - Issues: https://github.com/vimoxshah/homebrew-clockwork/issues
 
 This tap contains only the cask formula. Clockwork itself is closed source.
