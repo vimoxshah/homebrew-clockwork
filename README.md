@@ -53,5 +53,9 @@ These are enforced and covered by tests, not aspirations.
 
 - Website: https://clockwork.pages.dev
 - Issues: https://github.com/vimoxshah/homebrew-clockwork/issues
+- Email: vmoksh.shah179@gmail.com
+
+Clockwork is an early build and I read every message — bug reports, "this broke
+on my repo", or what would make it worth paying for are all welcome.
 
 This tap contains only the cask formula. Clockwork itself is closed source.
