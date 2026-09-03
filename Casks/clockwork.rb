@@ -13,15 +13,14 @@ cask "clockwork" do
   app "Clockwork.app"
 
   # The build is not notarised — an Apple Developer certificate is $99/year and
-  # this is an early release. Install with:
-  #     brew install --cask --no-quarantine clockwork
-  # Without that flag macOS quarantine will refuse to open the app. Homebrew
-  # still verifies the sha256 above, so you are trusting a binary whose hash you
-  # can check, not an unverified download.
+  # this is an early release. Homebrew 6 removed --no-quarantine and
+  # HOMEBREW_CASK_OPTS does not accept it either, so quarantine is always
+  # applied and the user clears it afterwards. Homebrew still verifies the
+  # sha256 above, so this is a binary whose hash was checked for you.
   caveats <<~EOS
-    Clockwork is not notarised by Apple yet.
+    Clockwork is not notarised by Apple yet, so macOS quarantines it.
 
-    If you installed without --no-quarantine and macOS refuses to open it:
+    Clear the flag before first launch:
       xattr -dr com.apple.quarantine /Applications/Clockwork.app
 
     Clockwork needs Node 22+ and at least one provider CLI

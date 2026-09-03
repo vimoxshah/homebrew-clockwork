@@ -9,30 +9,28 @@ and files a report you can read.
 ```bash
 brew tap vimoxshah/clockwork
 brew trust vimoxshah/clockwork
-brew install --cask --no-quarantine clockwork
+brew install --cask clockwork
+xattr -dr com.apple.quarantine /Applications/Clockwork.app
 ```
 
 `brew trust` is required: Homebrew refuses to load casks from third-party taps
 until you explicitly trust them. That is a good default — you are vouching for
 this tap, so read the cask first if you like: it is one file.
 
-### Why `--no-quarantine`
+### Why the `xattr` step
 
 Clockwork is **not notarised by Apple**. A Developer certificate is $99/year and
 this is an early build, so the app is ad-hoc signed. macOS quarantines anything
 downloaded from the internet and refuses to open unsigned apps — usually with a
 misleading "the app is damaged" message.
 
-`--no-quarantine` skips that. Homebrew still verifies the DMG's SHA-256 against
-the hash pinned in the cask, so you are trusting a binary whose hash is checked
-for you — which is meaningfully better than hand-running `xattr` on a file you
-never verified.
+Homebrew cannot skip that for you. Homebrew 6 removed `--no-quarantine`, and
+`HOMEBREW_CASK_OPTS` accepts only `--*dir`, `--language`, `--require-sha` and
+`--no-binaries` — so quarantine is always applied and you clear it yourself.
 
-If you already installed without the flag:
-
-```bash
-xattr -dr com.apple.quarantine /Applications/Clockwork.app
-```
+What Homebrew still does is verify the DMG's SHA-256 against the hash pinned in
+the cask. So you are clearing quarantine on a binary whose hash was checked for
+you, rather than on a file you downloaded and never verified.
 
 ## Requirements
 
