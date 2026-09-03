@@ -51,7 +51,7 @@ These are enforced and covered by tests, not aspirations.
 
 ## Links
 
-- Website: https://clockwork.pages.dev
+- Website: https://clockwork.vmoksh-shah179.workers.dev
 - Issues: https://github.com/vimoxshah/homebrew-clockwork/issues
 - Email: vmoksh.shah179@gmail.com
 
