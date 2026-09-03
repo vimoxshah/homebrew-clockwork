@@ -7,7 +7,7 @@ cask "clockwork" do
   desc "Calendar that schedules AI coding agents in sandboxed git worktrees"
   homepage "https://clockwork.vmoksh-shah179.workers.dev/"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
   depends_on arch: :arm64
 
   app "Clockwork.app"

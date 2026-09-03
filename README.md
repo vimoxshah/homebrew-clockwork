@@ -8,8 +8,13 @@ and files a report you can read.
 
 ```bash
 brew tap vimoxshah/clockwork
+brew trust vimoxshah/clockwork
 brew install --cask --no-quarantine clockwork
 ```
+
+`brew trust` is required: Homebrew refuses to load casks from third-party taps
+until you explicitly trust them. That is a good default — you are vouching for
+this tap, so read the cask first if you like: it is one file.
 
 ### Why `--no-quarantine`
 
