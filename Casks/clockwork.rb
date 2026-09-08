@@ -1,13 +1,19 @@
 cask "clockwork" do
-  version "0.8.0"
-  sha256 "54ee82e450869cbff1386c327021c695d2768a86ec68823c22b490cd25ba169c"
+  version "0.11.0"
+  sha256 "53b9780c1452479f03457bec7578a778aea74c8d8a9a60cd04f7143dfe84b6c0"
 
-  url "https://clockwork.vmoksh-shah179.workers.dev/downloads/Clockwork_#{version}_aarch64.dmg"
+  # Straight from the GitHub release, which is where the artifact and its
+  # published checksum canonically live. It used to point at the marketing
+  # site's own /downloads copy, and that mirror is updated by a separate
+  # deploy — so between publishing a release and redeploying the site, this
+  # url 404'd and every `brew install --cask clockwork` failed. One source.
+  url "https://github.com/vimoxshah/clockwork/releases/download/v#{version}/Clockwork_#{version}_aarch64.dmg"
   name "Clockwork"
   desc "Calendar that schedules AI coding agents in sandboxed git worktrees"
-  homepage "https://clockwork.vmoksh-shah179.workers.dev/"
+  homepage "https://vimoxshah.github.io/clockwork/"
 
-  depends_on macos: :sonoma
+  # Ventura, matching the app's own LSMinimumSystemVersion (13.0).
+  depends_on macos: :ventura
   depends_on arch: :arm64
 
   app "Clockwork.app"
@@ -23,8 +29,12 @@ cask "clockwork" do
     Clear the flag before first launch:
       xattr -dr com.apple.quarantine /Applications/Clockwork.app
 
-    Clockwork needs Node 22+ and at least one provider CLI
-    (claude, codex, opencode or hermes) already on your PATH.
+    From 0.11.0 this cask installs everything: the app carries the daemon and
+    its own Node runtime, and registers a background agent on first launch.
+    There is nothing else to install and no token to paste.
+
+    You do need at least one provider CLI you are already logged into
+    (claude, codex, opencode or hermes) on your PATH.
   EOS
 
   zap trash: [
